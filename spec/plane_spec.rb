@@ -1,5 +1,13 @@
- require './lib/airport'
- require './lib/plane'
+# When we create a new plane, it should have a "flying" status, thus planes can not be created in the airport.
+#
+# When we land a plane at the airport, the plane in question should have its status changed to "landed"
+#
+# When the plane takes of from the airport, the plane's status should become "flying"
+
+ 
+
+require './lib/airport'
+require './lib/plane'
 
 
 describe Plane do
@@ -17,7 +25,12 @@ describe Plane do
   end
 
   it 'can land' do
-    plane.land!
+    plane.land
+    expect(plane.flying?).to eq false
+  end
+
+  it 'changes its status to landed after landing' do
+    plane.land
     expect(plane.flying?).to eq false
   end
 
@@ -29,6 +42,7 @@ describe Plane do
   it 'changes its status to flying after taking of' do
     expect(plane).to be_flying
   end
+
 end
 
 # grand final
@@ -37,9 +51,9 @@ end
 # Check when all the planes have landed that they have the right status "landed"
 # Once all the planes are in the air again, check that they have the status of flying!
 
-xdescribe "The grand finale (last spec)" do
+# describe "The grand finale (last spec)" do
 
-  xit 'all planes can land and all planes can take off' do
+#   it 'all planes can land and all planes can take off' do
 
-  end
-end
+#   end
+# end
