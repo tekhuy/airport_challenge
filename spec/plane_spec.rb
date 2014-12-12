@@ -1,25 +1,33 @@
-# require 'airport'
-# require 'plane'
+ require './lib/airport'
+ require './lib/plane'
 
 
 describe Plane do
 
   let(:plane) { Plane.new }
+  let(:airport) {double :airport}
 
   it 'has a flying status when created' do
-
+    expect(plane).to be_flying
   end
 
   it 'has a flying status when in the air' do
+    plane.in_air
+    expect(plane.flying?).to eq true
+  end
 
+  it 'can land' do
+    plane.land!
+    expect(plane.flying?).to eq false
   end
 
   it 'can take off' do
-
+    plane.take_off
+    expect(plane).to be_flying
   end
 
   it 'changes its status to flying after taking of' do
-
+    expect(plane).to be_flying
   end
 end
 
@@ -29,10 +37,9 @@ end
 # Check when all the planes have landed that they have the right status "landed"
 # Once all the planes are in the air again, check that they have the status of flying!
 
-describe "The gand finale (last spec)" do
+xdescribe "The grand finale (last spec)" do
 
-  it 'all planes can land and all planes can take off' do
+  xit 'all planes can land and all planes can take off' do
 
   end
 end
-
