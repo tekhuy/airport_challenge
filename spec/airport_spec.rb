@@ -28,8 +28,9 @@ require './lib/airport'
     it 'a plane permission to take off' do
       allow(plane).to receive(:land)
       airport.landing(plane)
+      expect(airport.plane_count).to eq(1)
       allow(plane).to receive(:take_off)
-      airport.fly_permission
+      airport.fly_permission(plane)
       expect(airport.plane_count).to eq(0)
     end
   end

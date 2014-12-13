@@ -7,10 +7,6 @@ class Airport
     @planes = []
   end
 
-  # def flying?
-  #   @flying 
-  # end
-
   def capacity
     @capacity ||= DEFAULT_CAPACITY
   end
@@ -23,7 +19,7 @@ class Airport
 
   def fly_permission(plane)
     #raise 'There are no planes to dispatch' if empty?
-    plane.flying?
+    plane.take_off
     @planes.delete(plane)
   end
 
