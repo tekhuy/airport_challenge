@@ -9,8 +9,7 @@ I have created the following to help with identifying what it is I will need to 
 **Class Responsibility Collaborations**
 ***************************************
 
-#class Plane
- ===========
+##class Plane
 
 | RESPONSIBILITIES       | COLLABORATORS  |
 |------------------------|----------------|
@@ -20,8 +19,7 @@ I have created the following to help with identifying what it is I will need to 
 |take off                | Airport        |
 
 
-#class Airport
- =============
+##class Airport
 
 | RESPONSIBILITIES       | COLLABORATORS  |
 |------------------------|----------------|
