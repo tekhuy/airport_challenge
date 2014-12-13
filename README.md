@@ -6,25 +6,25 @@ This is the end of week 1 challenge where we are consolidate what we have learnt
 I have created the following to help with identifying what it is I will need to create. 
 
 
-Class Responsibility Collaborations
-***********************************
+**Class Responsibility Collaborations**
+***************************************
 
-class Plane
-===========
+#class Plane
+ ===========
 
-RESPONSIBILITIES        | COLLABORATORS
-------------------------------------------
-flying                  | 
-land                    | Airport
-grounded                | Airport
-take off                | Airport
+| RESPONSIBILITIES       | COLLABORATORS  |
+|------------------------|----------------|
+|flying                  |                |
+|land                    | Airport        |
+|grounded                | Airport        |
+|take off                | Airport        |
 
 
-class Airport
-=============
+#class Airport
+ =============
 
-RESPONSIBILITIES        | COLLABORATORS
-------------------------------------------
-hold plane              | Plane
-permission to land      | Plane
-permission to take off  | Plane
+| RESPONSIBILITIES       | COLLABORATORS  |
+|------------------------|----------------|
+|hold plane              | Plane          |
+|permission to land      | Plane          |
+|permission to take off  | Plane          |
