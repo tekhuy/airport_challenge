@@ -6,15 +6,15 @@ class Plane
   end
 
   def flying?
-    @flying 
+    @flying
   end
 
   def in_air
     @flying
     if @flying == true
-      return "in air"
+      return "flying"
     else 
-      return "grounded"
+      return "Negative Ghostrider - The plane is grounded"
     end
   end
 
@@ -25,9 +25,9 @@ class Plane
   def land
     @flying = false
       if @flying == false
-        return "landed"
+        return "No Mav... The plane has landed"
       else
-        return "in air"
+        return "We're flying in the air"
       end
   end
 

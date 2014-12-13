@@ -1,5 +1,5 @@
 require './lib/airport'
-require './lib/plane'
+ #require './lib/plane'
 
 # A plane currently in the airport can be requested to take off.
 #
@@ -10,14 +10,19 @@ require './lib/plane'
 
   describe Airport do
 
-  let(:airport) { Airport.new }
+  let(:airport) { Airport.new(:capacity => 10) }
   let(:plane) {double :plane}
+
+  # it 'should allow setting default capacity on initialising' do
+  #   expect(self.capacity).to eq(10)
+  # end
 
   context 'taking off and landing' do
 
-    xit 'a plane can land' do
-      plane.land(airport)
-      expect(plane.not_flying).to be_true
+    it 'a plane can land' do
+      allow(airport.plane_count).to eq(0)
+      airport.land(plane)
+      expect(airport.plane_count).to eq(1)
     end
 
     xit 'a plane can take off' do
