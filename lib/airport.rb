@@ -12,13 +12,13 @@ class Airport
   end
 
   def landing(plane)
-  #   raise 'There are no slots available at this airport' if full?
+  #   raise 'There are no ports available at this airport' if full?
      plane.land
      @planes << plane
   end
 
   def fly_permission(plane)
-    #raise 'There are no planes to dispatch' if empty?
+    #raise 'There are no planes at the airport' if empty?
     plane.take_off
     @planes.delete(plane)
   end

@@ -17,7 +17,7 @@ require './lib/airport'
   #   expect(self.capacity).to eq(10)
   # end
 
-  context 'Airport Traffic Control should give' do
+  context 'Traffic Control should give' do
 
     it 'a plane permission to land' do
       allow(plane).to receive(:land)
@@ -35,9 +35,9 @@ require './lib/airport'
     end
   end
 
-  xcontext 'traffic control' do
+  xcontext 'Traffic Control' do
 
-    xit 'a plane cannot land if the airport is full' do
+    xit 'should not permit a plane to land if the airport is full' do
 
     end
 
@@ -51,11 +51,11 @@ require './lib/airport'
 
     xcontext 'weather conditions' do
 
-      xit 'a plane cannot take off when there is a storm brewing' do
+      xit 'will prevent a plane from taking off when there is a storm brewing' do
 
       end
 
-      xit 'a plane cannot land in the middle of a storm' do
+      xit 'will prevent a plane from landing in the middle of a storm' do
 
       end
     end
