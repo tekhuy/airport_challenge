@@ -1,7 +1,30 @@
 class Airport
+  
+  DEFAULT_CAPACITY = 10
 
   def initialize(options = {})
-    @capacity = 10
+    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
+    @planes = []
+  end
+
+  # def flying?
+  #   @flying 
+  # end
+
+  def capacity
+    @capacity ||= DEFAULT_CAPACITY
+  end
+
+  def landing(plane)
+  #   raise 'There are no slots available at this airport' if full?
+     plane.land
+     @planes << plane
+  end
+
+  def fly_permission(plane)
+    #raise 'There are no planes to dispatch' if empty?
+    plane.flying?
+    @planes.delete(plane)
   end
 
   # def capacity=(value)
@@ -12,12 +35,12 @@ class Airport
   #   capacity ||= DEFAULT_CAPACITY
   # end
 
-  def planes
-    @planes ||= []
-  end
+  # def planes
+  #   @planes ||= []
+  # end
 
   def plane_count
-    @plane.count
+    @planes.count
   end
 
 end

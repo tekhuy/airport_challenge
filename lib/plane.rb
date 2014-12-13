@@ -6,7 +6,7 @@ class Plane
   end
 
   def flying?
-    @flying
+    @flying 
   end
 
   def in_air
@@ -23,12 +23,8 @@ class Plane
   end
 
   def land
-    @flying = false
-      if @flying == false
-        return "No Mav... The plane has landed"
-      else
-        return "We're flying in the air"
-      end
+    @flying = false 
+      return "The eagle has landed"
   end
 
 

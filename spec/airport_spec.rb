@@ -1,5 +1,5 @@
 require './lib/airport'
- #require './lib/plane'
+# require './lib/plane'
 
 # A plane currently in the airport can be requested to take off.
 #
@@ -17,16 +17,20 @@ require './lib/airport'
   #   expect(self.capacity).to eq(10)
   # end
 
-  context 'taking off and landing' do
+  context 'Airport Traffic Control should give' do
 
-    it 'a plane can land' do
-      allow(airport.plane_count).to eq(0)
-      airport.land(plane)
+    it 'a plane permission to land' do
+      allow(plane).to receive(:land)
+      airport.landing(plane)
       expect(airport.plane_count).to eq(1)
     end
 
-    xit 'a plane can take off' do
-
+    it 'a plane permission to take off' do
+      allow(plane).to receive(:land)
+      airport.landing(plane)
+      allow(plane).to receive(:take_off)
+      airport.fly_permission
+      expect(airport.plane_count).to eq(0)
     end
   end
 
