@@ -26,6 +26,5 @@ class Plane
     @flying = false 
       return "The eagle has landed"
   end
-
-
+  
 end
