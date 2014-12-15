@@ -1,5 +1,5 @@
 require './lib/airport'
-require './lib/plane'
+# require './lib/plane'
 
 # A plane currently in the airport can be requested to take off.
 #
@@ -12,11 +12,13 @@ require './lib/plane'
 
   let(:airport) { Airport.new(:capacity => 10) }
   let(:plane) {double :plane}
+  let(:weather) {double :weather}
   # let(:plane) {Plane.new}
 
     def fill_airport(airport)
-      10.times { airport.landing(Plane.new) }
+      airport.capacity.times { airport.landing(double :plane, :land => true) }
     end
+    
 
   # it 'should allow setting default capacity on initialising' do
   #   expect(self.capacity).to eq(10)
@@ -30,42 +32,52 @@ require './lib/plane'
         expect(airport.plane_count).to eq(1)
       end
 
-      it 'a plane permission to take off' do
-        allow(plane).to receive(:land)
-        airport.landing(plane)
-        expect(airport.plane_count).to eq(1)
-        allow(plane).to receive(:take_off)
-        airport.fly_permission(plane)
-        expect(airport.plane_count).to eq(0)
-      end
+      # xit 'a plane permission to take off' do
+      #   allow(plane).to receive(:land)
+      #   airport.landing(plane)
+      #   allow(plane).to receive(:take_off)
+      #   airport.fly_permission(plane)
+      #   expect(airport.plane_count).to eq(0)
+      # end
 
     end
 
     context 'Traffic Control' do
 
+      it 'should know when the airport is full' do
+        fill_airport(airport)
+        expect(airport.plane_count).to eq 10
+      end
+
       it 'should not permit a plane to land if the airport is full' do
         fill_airport airport
-        # airport.full? 
-        expect(lambda{airport.landing(Plane.new)}).to raise_error('Airport is full!')
+        expect(lambda{airport.landing(plane)}).to raise_error('Airport is full!')
       end
 
     end
 
-    # context 'weather conditions' do
+    context 'weather conditions' do
 
-    #   it 'will prevent a plane from taking off when there is a storm brewing' do
-    #     allow(plane).to receive(:land)
-    #     allow(airport).to receive(landing(:plane))
-    #     expect(airport.plane_count).to eq(1)
-    #     allow(plane).to receive(:take_off)
-    #     airport.fly_permission(plane)
-    #     expect(airport.plane_count).to eq(0)
-    #   end
+      it 'will prevent a plane from taking off when there is a storm brewing' do
+        allow(plane).to receive(:land)
+        airport.landing(plane)
+        allow(airport).to receive(:storm).and_return("Storm brewing")
+        expect(airport.fly_permission(plane)).to eq "You cannot take off"
+      end
 
-    #   xit 'will prevent a plane from landing in the middle of a storm' do
-    #   end
+      it 'will allow a plane to take off when there are clear skies' do
+        allow(plane).to receive(:land)
+        airport.landing(plane)
+        allow(airport).to receive(:storm).and_return("Clear skies")
+        allow(plane).to receive(:take_off)
+        airport.fly_permission(plane)
+        expect(airport.plane_count).to eq 0
+      end
 
-    # end
+      xit 'will prevent a plane from landing in the middle of a storm' do
+      end
+
+    end
 
   end
 
