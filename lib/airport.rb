@@ -5,7 +5,8 @@ class Airport
   include Weather
 
   DEFAULT_CAPACITY = 10
-  attr_accessor :planes
+    
+      attr_accessor :planes
 
     def initialize(options = {})
       @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
