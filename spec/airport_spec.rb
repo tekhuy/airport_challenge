@@ -20,9 +20,9 @@ require './lib/airport'
     end
     
 
-  # it 'should allow setting default capacity on initialising' do
-  #   expect(self.capacity).to eq(10)
-  # end
+  it 'should allow setting default capacity on initialising' do
+    expect(airport.capacity).to eq 10
+  end
 
     context 'Traffic Control should give' do
 
@@ -31,14 +31,6 @@ require './lib/airport'
         airport.landing(plane)
         expect(airport.plane_count).to eq(1)
       end
-
-      # xit 'a plane permission to take off' do
-      #   allow(plane).to receive(:land)
-      #   airport.landing(plane)
-      #   allow(plane).to receive(:take_off)
-      #   airport.fly_permission(plane)
-      #   expect(airport.plane_count).to eq(0)
-      # end
 
     end
 
@@ -74,13 +66,15 @@ require './lib/airport'
         expect(airport.plane_count).to eq 0
       end
 
-      xit 'will prevent a plane from landing in the middle of a storm' do
+      it 'will prevent a plane from landing in the middle of a storm' do
+        allow(airport).to receive(:storm).and_return("Storm brewing")
+        allow(plane).to receive(:permission_land).and_return("Permission denied!")
+        expect(airport.plane_count).to eq 0
       end
 
     end
 
   end
-
 
 # grand final
 # Given 6 planes, each plane must land. When the airport is full, every plane must take off again.
