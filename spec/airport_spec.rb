@@ -1,5 +1,5 @@
 require './lib/airport'
-# require './lib/plane'
+require './lib/plane'
 
 # A plane currently in the airport can be requested to take off.
 #
@@ -12,6 +12,11 @@ require './lib/airport'
 
   let(:airport) { Airport.new(:capacity => 10) }
   let(:plane) {double :plane}
+  # let(:plane) {Plane.new}
+
+    def fill_airport(airport)
+      10.times { airport.landing(Plane.new) }
+    end
 
   # it 'should allow setting default capacity on initialising' do
   #   expect(self.capacity).to eq(10)
@@ -36,32 +41,35 @@ require './lib/airport'
 
     end
 
-    xcontext 'Traffic Control' do
+    context 'Traffic Control' do
 
-      xit 'should not permit a plane to land if the airport is full' do
+      it 'should not permit a plane to land if the airport is full' do
+        fill_airport airport
+        # airport.full? 
+        expect(lambda{airport.landing(Plane.new)}).to raise_error('Airport is full!')
       end
 
     end
 
-    context 'weather conditions' do
+    # context 'weather conditions' do
 
-      it 'will prevent a plane from taking off when there is a storm brewing' do
-        allow(plane).to receive(:land)
-        allow(airport).to receive(landing(:plane))
-        expect(airport.plane_count).to eq(1)
-        # allow(plane).to receive(:take_off)
-        # airport.fly_permission(plane)
-        # expect(airport.plane_count).to eq(0)
-      end
+    #   it 'will prevent a plane from taking off when there is a storm brewing' do
+    #     allow(plane).to receive(:land)
+    #     allow(airport).to receive(landing(:plane))
+    #     expect(airport.plane_count).to eq(1)
+    #     allow(plane).to receive(:take_off)
+    #     airport.fly_permission(plane)
+    #     expect(airport.plane_count).to eq(0)
+    #   end
 
-      xit 'will prevent a plane from landing in the middle of a storm' do
-      end
+    #   xit 'will prevent a plane from landing in the middle of a storm' do
+    #   end
 
-    end
+    # end
 
   end
 
-  
+
 # grand final
 # Given 6 planes, each plane must land. When the airport is full, every plane must take off again.
 # Be careful of the weather, it could be stormy!

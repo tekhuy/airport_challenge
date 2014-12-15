@@ -14,9 +14,9 @@ class Airport
     end
 
     def landing(plane)
-    #   raise 'There are no ports available at this airport' if full?
-       plane.land
-       @planes << plane
+      raise 'Airport is full!' if full?
+        plane.land
+        @planes << plane
     end
 
     def fly_permission(plane)
@@ -25,17 +25,21 @@ class Airport
       @planes.delete(plane)
     end
 
+    def full?
+      plane_count == @capacity
+    end
+
   # def capacity=(value)
   #   @capacity = value
   # end
 
-  # def capacity
-  #   capacity ||= DEFAULT_CAPACITY
-  # end
+  def capacity
+    capacity ||= DEFAULT_CAPACITY
+  end
 
-  # def planes
-  #   @planes ||= []
-  # end
+  def planes
+    @planes ||= []
+  end
 
     def plane_count
       @planes.count
