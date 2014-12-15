@@ -26,7 +26,9 @@ class Airport
       if self.storm == "Clear skies"
         plane.take_off 
         @planes.delete(plane)
+        "You are clear for take off!"
       else
+        plane.land
         "You cannot take off"
       end
     end
@@ -44,7 +46,7 @@ class Airport
       plane_count == @capacity
     end
 
-    # def planes
+    # def planes         #use if not using attr_accessor
     #   @planes ||= []
     # end
 
