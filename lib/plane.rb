@@ -2,7 +2,7 @@ class Plane
 
   def initialize
     @flying = true
-    @land 
+    # @land 
   end
 
   def flying?
@@ -10,12 +10,7 @@ class Plane
   end
 
   def in_air
-    @flying
-    if @flying == true
-      return "flying"
-    else 
-      return "Negative Ghostrider - The plane is grounded"
-    end
+    @flying == true ? "flying" : "Negative Ghostrider - The plane is grounded"
   end
 
   def take_off
@@ -23,8 +18,8 @@ class Plane
   end
 
   def land
-    @flying = false 
-      return "The eagle has landed"
+    @flying = false
+      "The eagle has landed"
   end
   
 end
